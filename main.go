@@ -14,7 +14,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/spf13/viper"
 	"go.uber.org/zap"
 )
 
@@ -45,10 +44,12 @@ func main() {
 	}
 	defer redis.Close()
 	// 5. 注册路由
-	router := routes.Setup()
+	router := routes.Setup(settings.Conf)
 	// 6. 启动服务（优雅关机）
+	// fmt.Println("启动服务器，监听端口：", settings.Conf.Port)
+	// fmt.Println("version: ", settings.Conf.Version)
 	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%d", viper.GetInt("app.port")),
+		Addr:    fmt.Sprintf(":%d", settings.Conf.Port), // :8081
 		Handler: router,
 	} // 配置 http 服务器
 

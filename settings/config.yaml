@@ -1,8 +1,7 @@
-app:
-  name: "web_app"
-  mode: "dev"
-  vesion: "1.0.0"
-  port: 8081
+name: "web_app"
+mode: "dev"
+version: "2.0.0"
+port: 8081
 log:
   level: "debug"
   filename: "web_app.log"

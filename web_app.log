@@ -1,2 +1,30 @@
 {"level":"INFO","time":"2025-01-23T17:58:53.890+0800","caller":"web-app/main.go:68","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2025-01-23T17:58:53.893+0800","caller":"web-app/main.go:76","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:12:33.843+0800","caller":"web-app/main.go:68","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:12:33.864+0800","caller":"web-app/main.go:76","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:22:22.515+0800","caller":"web-app/main.go:68","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:22:22.526+0800","caller":"web-app/main.go:76","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:24:30.689+0800","caller":"web-app/main.go:67","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:24:30.692+0800","caller":"web-app/main.go:75","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:28:10.168+0800","caller":"web-app/main.go:67","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:28:10.172+0800","caller":"web-app/main.go:75","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:35:05.216+0800","caller":"web-app/main.go:67","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:35:05.220+0800","caller":"web-app/main.go:75","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:36:41.125+0800","caller":"web-app/main.go:68","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:36:41.129+0800","caller":"web-app/main.go:76","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:42:50.730+0800","caller":"logger/logger.go:70","msg":"/version","status":200,"method":"GET","path":"/version","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000155}
+{"level":"INFO","time":"2025-01-24T15:45:33.516+0800","caller":"web-app/main.go:68","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:45:33.516+0800","caller":"web-app/main.go:76","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:48:32.570+0800","caller":"logger/logger.go:70","msg":"/version","status":200,"method":"GET","path":"/version","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000156084}
+{"level":"INFO","time":"2025-01-24T15:48:36.814+0800","caller":"logger/logger.go:70","msg":"/version","status":200,"method":"GET","path":"/version","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.0000235}
+{"level":"INFO","time":"2025-01-24T15:49:01.383+0800","caller":"web-app/main.go:68","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:49:01.384+0800","caller":"web-app/main.go:76","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:49:08.300+0800","caller":"logger/logger.go:70","msg":"/version","status":200,"method":"GET","path":"/version","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000143125}
+{"level":"INFO","time":"2025-01-24T15:50:14.314+0800","caller":"web-app/main.go:68","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:50:14.315+0800","caller":"web-app/main.go:76","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:51:23.686+0800","caller":"web-app/main.go:69","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:51:23.689+0800","caller":"web-app/main.go:77","msg":"Server exiting"}
+{"level":"INFO","time":"2025-01-24T15:51:40.403+0800","caller":"logger/logger.go:70","msg":"/version","status":200,"method":"GET","path":"/version","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000115958}
+{"level":"INFO","time":"2025-01-24T15:51:48.432+0800","caller":"logger/logger.go:70","msg":"/version","status":200,"method":"GET","path":"/version","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000023375}
+{"level":"INFO","time":"2025-01-24T15:51:50.837+0800","caller":"web-app/main.go:69","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-01-24T15:51:50.837+0800","caller":"web-app/main.go:77","msg":"Server exiting"}
