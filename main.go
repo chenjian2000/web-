@@ -7,6 +7,7 @@ import (
 	"niko-web_app/dao/mysql"
 	"niko-web_app/dao/redis"
 	"niko-web_app/logger"
+	"niko-web_app/pkg/snowflake"
 	"niko-web_app/routes"
 	"niko-web_app/settings"
 	"os"
@@ -43,6 +44,13 @@ func main() {
 		return
 	}
 	defer redis.Close()
+
+	// 初始化 雪花算法分布式ID生成器
+	if err := snowflake.Init(settings.Conf.StartTime, settings.Conf.MachineID); err != nil {
+		fmt.Printf("init snowflake failed, err: %v\n", err)
+		return
+	}
+
 	// 5. 注册路由
 	router := routes.Setup(settings.Conf)
 	// 6. 启动服务（优雅关机）

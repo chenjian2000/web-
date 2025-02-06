@@ -31,3 +31,5 @@
 {"level":"INFO","time":"2025-01-27T22:14:50.672+0800","caller":"logger/logger.go:70","msg":"/version","status":200,"method":"GET","path":"/version","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000123416}
 {"level":"INFO","time":"2025-01-27T22:18:32.844+0800","caller":"web-app/main.go:69","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2025-01-27T22:18:32.845+0800","caller":"web-app/main.go:77","msg":"Server exiting"}
+{"level":"INFO","time":"2025-02-06T16:19:42.469+0800","caller":"web-app/main.go:77","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T16:19:42.476+0800","caller":"web-app/main.go:85","msg":"Server exiting"}
