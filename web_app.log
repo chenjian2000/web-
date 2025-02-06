@@ -33,3 +33,47 @@
 {"level":"INFO","time":"2025-01-27T22:18:32.845+0800","caller":"web-app/main.go:77","msg":"Server exiting"}
 {"level":"INFO","time":"2025-02-06T16:19:42.469+0800","caller":"web-app/main.go:77","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2025-02-06T16:19:42.476+0800","caller":"web-app/main.go:85","msg":"Server exiting"}
+{"level":"INFO","time":"2025-02-06T17:21:25.383+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000306583}
+{"level":"INFO","time":"2025-02-06T17:21:25.383+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.0005415}
+{"level":"INFO","time":"2025-02-06T17:22:15.872+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000095833}
+{"level":"INFO","time":"2025-02-06T17:22:32.580+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000108625}
+{"level":"INFO","time":"2025-02-06T17:22:50.421+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000077333}
+{"level":"INFO","time":"2025-02-06T17:28:06.137+0800","caller":"web-app/main.go:77","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T17:28:06.137+0800","caller":"web-app/main.go:85","msg":"Server exiting"}
+{"level":"ERROR","time":"2025-02-06T17:28:17.690+0800","caller":"controller/user.go:29","msg":"SignUp with invalid parameters"}
+{"level":"INFO","time":"2025-02-06T17:28:17.691+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.002049834}
+{"level":"INFO","time":"2025-02-06T17:28:22.280+0800","caller":"web-app/main.go:77","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T17:28:22.281+0800","caller":"web-app/main.go:85","msg":"Server exiting"}
+{"level":"ERROR","time":"2025-02-06T17:38:19.713+0800","caller":"controller/user.go:20","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.RePassword' Error:Field validation for 'RePassword' failed on the 'required' tag"}
+{"level":"INFO","time":"2025-02-06T17:38:19.723+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.01102575}
+{"level":"INFO","time":"2025-02-06T17:38:31.961+0800","caller":"web-app/main.go:77","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T17:38:31.962+0800","caller":"web-app/main.go:85","msg":"Server exiting"}
+{"level":"ERROR","time":"2025-02-06T17:59:12.177+0800","caller":"controller/user.go:21","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.RePassword' Error:Field validation for 'RePassword' failed on the 'required' tag"}
+{"level":"INFO","time":"2025-02-06T17:59:12.186+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.009450791}
+{"level":"INFO","time":"2025-02-06T18:00:22.267+0800","caller":"web-app/main.go:77","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T18:00:22.268+0800","caller":"web-app/main.go:85","msg":"Server exiting"}
+{"level":"ERROR","time":"2025-02-06T18:00:29.048+0800","caller":"controller/user.go:21","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'required' tag\nKey: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'eqfield' tag"}
+{"level":"INFO","time":"2025-02-06T18:00:29.051+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.003355875}
+{"level":"INFO","time":"2025-02-06T18:01:43.566+0800","caller":"web-app/main.go:83","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T18:01:43.567+0800","caller":"web-app/main.go:91","msg":"Server exiting"}
+{"level":"ERROR","time":"2025-02-06T18:01:46.847+0800","caller":"controller/user.go:21","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'required' tag\nKey: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'eqfield' tag"}
+{"level":"INFO","time":"2025-02-06T18:01:46.850+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.002654875}
+{"level":"INFO","time":"2025-02-06T18:03:03.189+0800","caller":"web-app/main.go:83","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T18:03:03.190+0800","caller":"web-app/main.go:91","msg":"Server exiting"}
+{"level":"ERROR","time":"2025-02-06T18:05:04.902+0800","caller":"controller/user.go:21","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'required' tag\nKey: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'required' tag"}
+{"level":"INFO","time":"2025-02-06T18:05:04.906+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.004441}
+{"level":"INFO","time":"2025-02-06T18:05:21.237+0800","caller":"web-app/main.go:83","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T18:05:21.239+0800","caller":"web-app/main.go:91","msg":"Server exiting"}
+{"level":"ERROR","time":"2025-02-06T18:07:17.360+0800","caller":"controller/user.go:21","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.password' Error:Field validation for 'password' failed on the 'required' tag\nKey: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'eqfield' tag"}
+{"level":"INFO","time":"2025-02-06T18:07:17.363+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.003384041}
+{"level":"INFO","time":"2025-02-06T18:08:23.756+0800","caller":"web-app/main.go:83","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T18:08:23.757+0800","caller":"web-app/main.go:91","msg":"Server exiting"}
+{"level":"ERROR","time":"2025-02-06T18:08:30.088+0800","caller":"controller/user.go:21","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.password' Error:Field validation for 'password' failed on the 'required' tag"}
+{"level":"INFO","time":"2025-02-06T18:08:30.090+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.002140417}
+{"level":"ERROR","time":"2025-02-06T18:08:35.432+0800","caller":"controller/user.go:21","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'required' tag"}
+{"level":"INFO","time":"2025-02-06T18:08:35.433+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000287375}
+{"level":"ERROR","time":"2025-02-06T18:08:51.082+0800","caller":"controller/user.go:21","msg":"SignUp with invalid parameters","error":"Key: 'ParamSignUp.re_password' Error:Field validation for 're_password' failed on the 'eqfield' tag"}
+{"level":"INFO","time":"2025-02-06T18:08:51.082+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000389417}
+{"level":"INFO","time":"2025-02-06T18:08:56.903+0800","caller":"logger/logger.go:70","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.42.0","errors":"","cost":0.000109625}
+{"level":"INFO","time":"2025-02-06T18:09:01.413+0800","caller":"web-app/main.go:83","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-02-06T18:09:01.414+0800","caller":"web-app/main.go:91","msg":"Server exiting"}

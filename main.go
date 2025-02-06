@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"niko-web_app/controller"
 	"niko-web_app/dao/mysql"
 	"niko-web_app/dao/redis"
 	"niko-web_app/logger"
@@ -48,6 +49,11 @@ func main() {
 	// 初始化 雪花算法分布式ID生成器
 	if err := snowflake.Init(settings.Conf.StartTime, settings.Conf.MachineID); err != nil {
 		fmt.Printf("init snowflake failed, err: %v\n", err)
+		return
+	}
+
+	if err := controller.InitTrans("zh"); err != nil {
+		fmt.Printf("init validator Trans failed,err:%v\n", err)
 		return
 	}
 

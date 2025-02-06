@@ -47,3 +47,9 @@ func GetID() (id uint64, err error) { // 拿到sonyFlake节点生成id值
 	id, err = sonyFlake.NextID()
 	return
 }
+
+// func main() {
+// 	Init("2025-02-06", 1)
+// 	id, _ := GetID()
+// 	fmt.Println(id)
+// }
