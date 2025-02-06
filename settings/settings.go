@@ -2,12 +2,18 @@ package settings
 
 import (
 	"fmt"
+	"sync"
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
 
-// Conf 全库变量，用来保存程序的所有配置信息
+var (
+	confOnce sync.Once
+	initErr  error
+)
+
+// Conf 全局配置单例
 var Conf = new(AppConfig)
 
 type AppConfig struct {
@@ -47,24 +53,25 @@ type RedisConfig struct {
 }
 
 func Init() error {
-	viper.SetConfigFile("./settings/config.yaml") // 使用正确相对路径
-	err := viper.ReadInConfig()                   // 查找并读取配置文件
-	if err != nil {
-		// 处理读取配置文件的错误
-		return fmt.Errorf("failed to read config: %w", err) // 包装错误信息
-	}
-
-	// 将配置信息反序列化到 Conf 结构体中
-	if err := viper.Unmarshal(Conf); err != nil {
-		return fmt.Errorf("failed to unmarshal config: %w", err)
-	}
-
-	viper.WatchConfig()
-	viper.OnConfigChange(func(in fsnotify.Event) {
-		fmt.Println("配置文件被修改！")
-		if err := viper.Unmarshal(Conf); err != nil {
-			fmt.Printf("failed to unmarshal config: %v\n", err)
+	confOnce.Do(func() {
+		viper.SetConfigFile("./settings/config.yaml")
+		if err := viper.ReadInConfig(); err != nil {
+			initErr = fmt.Errorf("failed to read config: %w", err)
+			return
 		}
+
+		if err := viper.Unmarshal(Conf); err != nil {
+			initErr = fmt.Errorf("failed to unmarshal config: %w", err)
+			return
+		}
+
+		viper.WatchConfig()
+		viper.OnConfigChange(func(in fsnotify.Event) {
+			fmt.Println("配置文件被修改！")
+			if err := viper.Unmarshal(Conf); err != nil {
+				fmt.Printf("failed to unmarshal config: %v\n", err)
+			}
+		})
 	})
-	return nil
+	return initErr
 }
