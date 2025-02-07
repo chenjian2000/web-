@@ -16,6 +16,9 @@ func Setup(cfg *settings.AppConfig) *gin.Engine {
 	// 注册业务 路由
 	r.POST("/signup", controller.SignUpHandler)
 
+	// 登录业务 路由
+	r.POST("/login", controller.LoginHandler)
+
 	r.GET("/version", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "Welcome to web_app",
