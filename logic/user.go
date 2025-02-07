@@ -3,6 +3,8 @@ package logic
 import (
 	"niko-web_app/dao/mysql"
 	"niko-web_app/models"
+
+	"niko-web_app/pkg/jwt"
 	"niko-web_app/pkg/snowflake"
 )
 
@@ -30,10 +32,14 @@ func SignUp(p *models.ParamSignUp) (err error) {
 }
 
 // Login 用户登录
-func Login(p *models.ParamLogin) error {
+func Login(p *models.ParamLogin) (token string, err error) {
 	user := &models.User{
 		Username: p.Username,
 		Password: p.Password,
 	}
-	return mysql.Login(user)
+	if err := mysql.Login(user); err != nil {
+		return "", err
+	}
+	// 用户登录成功，生成JWT
+	return jwt.GenToken(user.UserID, user.Username)
 }

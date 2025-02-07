@@ -4,6 +4,7 @@ import (
 	"errors"
 	"niko-web_app/dao/mysql"
 	"niko-web_app/logic"
+
 	"niko-web_app/models"
 
 	"github.com/gin-gonic/gin"
@@ -58,7 +59,8 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 2. 业务处理
-	if err := logic.Login(&p); err != nil {
+	token, err := logic.Login(&p)
+	if err != nil {
 		zap.L().Error("logic.Login failed", zap.String("username", p.Username), zap.Error(err))
 		if errors.Is(err, mysql.ErrorUserNotExit) {
 			ResponseError(c, CodeUserNotExist)
@@ -67,6 +69,7 @@ func LoginHandler(c *gin.Context) {
 		ResponseError(c, CodeInvalidPassword)
 		return
 	}
+
 	// 3. 返回响应
-	ResponseSuccess(c, nil)
+	ResponseSuccess(c, token)
 }
