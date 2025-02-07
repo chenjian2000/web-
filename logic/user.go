@@ -2,16 +2,28 @@ package logic
 
 import (
 	"niko-web_app/dao/mysql"
+	"niko-web_app/models"
 	"niko-web_app/pkg/snowflake"
 )
 
 // 存放业务逻辑的处理
 
-func SignUp() {
+func SignUp(p *models.ParamSignUp) (err error) {
 	// 判断用户是否存在
-	mysql.QueryUserByName()
+	if err := mysql.CheckUserExist(p.Username); err != nil {
+		return err
+	}
 	// 生成 UID
-	snowflake.GetID()
+	userID, err := snowflake.GetID()
+	if err != nil {
+		return err
+	}
+	// 构造一个user实例
+	user := &models.User{
+		UserID:   userID,
+		Username: p.Username,
+		Password: p.Password,
+	}
 	// 写入数据库 mysql
-	mysql.InsertUser()
+	return mysql.InsertUser(user)
 }
