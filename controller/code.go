@@ -1,11 +1,5 @@
 package controller
 
-/**
- * @Author huchao
- * @Description //TODO 定义业务状态码
- * @Date 22:11 2022/2/10
- **/
-
 type ResCode int64
 
 const (
