@@ -1,7 +1,8 @@
 package controller
 
 import (
-	"net/http"
+	"errors"
+	"niko-web_app/dao/mysql"
 	"niko-web_app/logic"
 	"niko-web_app/models"
 
@@ -21,27 +22,23 @@ func SignUpHandler(c *gin.Context) {
 		// 如果是 validator.ValidationErrors 类型的 错误
 		errs, ok := err.(validator.ValidationErrors)
 		if !ok {
-			c.JSON(http.StatusOK, gin.H{
-				"msg": err.Error(),
-			})
+			ResponseError(c, CodeInvalidParams)
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{
-			"msg": removeTopStruct(errs.Translate(trans)),
-		})
+		ResponseErrorWithMsg(c, CodeInvalidParams, removeTopStruct(errs.Translate(trans)))
 		return
 	}
 	// 2. 业务处理
 	if err := logic.SignUp(&p); err != nil {
-		c.JSON(http.StatusOK, gin.H{
-			"msg": "注册失败",
-		})
+		if errors.Is(err, mysql.ErrorUserExit) {
+			ResponseError(c, CodeUserExist)
+			return
+		}
+		ResponseError(c, CodeServerBusy)
 		return
 	}
 	// 3. 返回响应
-	c.JSON(http.StatusOK, gin.H{
-		"msg": "success",
-	})
+	ResponseSuccess(c, nil)
 }
 
 // LoginHandler 处理用户登录
@@ -50,30 +47,26 @@ func LoginHandler(c *gin.Context) {
 	var p models.ParamLogin
 	if err := c.ShouldBindJSON(&p); err != nil {
 		// 请求参数有误
-		zap.L().Error("SignUp with invalid parameters", zap.Error(err))
+		zap.L().Error("Login with invalid parameters", zap.Error(err))
 		// 如果是 validator.ValidationErrors 类型的 错误
 		errs, ok := err.(validator.ValidationErrors)
 		if !ok {
-			c.JSON(http.StatusOK, gin.H{
-				"msg": err.Error(),
-			})
+			ResponseError(c, CodeInvalidParams)
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{
-			"msg": removeTopStruct(errs.Translate(trans)),
-		})
+		ResponseErrorWithMsg(c, CodeInvalidParams, removeTopStruct(errs.Translate(trans)))
 		return
 	}
 	// 2. 业务处理
 	if err := logic.Login(&p); err != nil {
-		zap.L().Error("logic.Login failed", zap.Error(err))
-		c.JSON(http.StatusOK, gin.H{
-			"msg": "用户名或密码错误",
-		})
+		zap.L().Error("logic.Login failed", zap.String("username", p.Username), zap.Error(err))
+		if errors.Is(err, mysql.ErrorUserNotExit) {
+			ResponseError(c, CodeUserNotExist)
+			return
+		}
+		ResponseError(c, CodeInvalidPassword)
 		return
 	}
 	// 3. 返回响应
-	c.JSON(http.StatusOK, gin.H{
-		"msg": "登录成功",
-	})
+	ResponseSuccess(c, nil)
 }
