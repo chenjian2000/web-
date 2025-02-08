@@ -3,17 +3,17 @@ package controller
 type ResCode int64
 
 const (
-	CodeSuccess           ResCode = 1000
-	CodeInvalidParams     ResCode = 1001
-	CodeUserExist         ResCode = 1002
-	CodeUserNotExist      ResCode = 1003
-	CodeInvalidPassword   ResCode = 1004
-	CodeServerBusy        ResCode = 1005
-	CodeInvalidToken      ResCode = 1006
-	CodeInvalidAuthFormat ResCode = 1007
-	CodeNotLogin          ResCode = 1008
-	ErrVoteRepeated       ResCode = 1009
-	ErrorVoteTimeExpire   ResCode = 1010
+	CodeSuccess ResCode = 1000 + iota
+	CodeInvalidParams
+	CodeUserExist
+	CodeUserNotExist
+	CodeInvalidPassword
+	CodeServerBusy
+	CodeInvalidToken
+	CodeInvalidAuthFormat
+	CodeNotLogin
+	ErrVoteRepeated
+	ErrorVoteTimeExpire
 )
 
 var codeMsgMap = map[ResCode]string{

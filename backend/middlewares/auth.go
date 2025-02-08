@@ -1,39 +1,16 @@
-package routes
+package middlewares
 
 import (
 	"fmt"
-	"net/http"
+
 	"niko-web_app/controller"
-	"niko-web_app/logger"
 	"niko-web_app/pkg/jwt"
-	"niko-web_app/settings"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 )
 
-func Setup(cfg *settings.AppConfig) *gin.Engine {
-	r := gin.New()
-	r.Use(logger.GinLogger(), logger.GinRecovery(true))
-
-	// 注册业务 路由
-	r.POST("/signup", controller.SignUpHandler)
-
-	// 登录业务 路由
-	r.POST("/login", controller.LoginHandler)
-
-	r.GET("/ping", JWTAuthMiddleware(), func(c *gin.Context) {
-		c.String(http.StatusOK, "pong")
-	})
-
-	r.GET("/version", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Welcome to web_app",
-			"version": cfg.Version,
-		})
-	})
-	return r
-}
+// const ContextUserIDKey = "userID"
 
 // JWTAuthMiddleware 基于JWT的认证中间件
 func JWTAuthMiddleware() func(c *gin.Context) {
@@ -43,7 +20,7 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 		// 这里的具体实现方式要依据你的实际业务情况决定
 		authHeader := c.Request.Header.Get("Authorization")
 		if authHeader == "" {
-			controller.ResponseErrorWithMsg(c, controller.CodeInvalidToken, "请求头缺少Auth Token")
+			controller.ResponseError(c, controller.CodeInvalidToken)
 			c.Abort()
 			return
 		}
@@ -51,7 +28,7 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 		//&& parts[0] == "Bearer"
 		parts := strings.SplitN(authHeader, " ", 2)
 		if !(len(parts) == 2) {
-			controller.ResponseErrorWithMsg(c, controller.CodeInvalidToken, "Token格式不对")
+			controller.ResponseError(c, controller.CodeInvalidToken)
 			c.Abort()
 			return
 		}
@@ -64,7 +41,7 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 			return
 		}
 		// 将当前请求的userID信息保存到请求的上下文c上
-		c.Set("userID", mc.UserID)
+		c.Set(controller.ContextUserIDKey, mc.UserID)
 		c.Next() // 后续的处理函数可以用过c.Get(ContextUserIDKey)来获取当前请求的用户信息
 	}
 }

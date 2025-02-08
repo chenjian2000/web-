@@ -2,8 +2,11 @@ package controller
 
 import (
 	"errors"
+	"net/http"
 	"niko-web_app/dao/mysql"
 	"niko-web_app/logic"
+	"niko-web_app/pkg/jwt"
+	"strings"
 
 	"niko-web_app/models"
 
@@ -59,7 +62,7 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 2. 业务处理
-	token, err := logic.Login(&p)
+	aToken, rToken, err := logic.Login(&p)
 	if err != nil {
 		zap.L().Error("logic.Login failed", zap.String("username", p.Username), zap.Error(err))
 		if errors.Is(err, mysql.ErrorUserNotExit) {
@@ -71,5 +74,35 @@ func LoginHandler(c *gin.Context) {
 	}
 
 	// 3. 返回响应
-	ResponseSuccess(c, token)
+	ResponseSuccess(c, gin.H{
+		"access_token":  aToken,
+		"refresh_token": rToken,
+	})
+}
+
+// RefreshTokenHandler 刷新 JWT
+func RefreshTokenHandler(c *gin.Context) {
+	rt := c.Query("refresh_token")
+	// 客户端携带Token有三种方式 1.放在请求头 2.放在请求体 3.放在URI
+	// 这里假设Token放在Header的 Authorization 中，并使用 Bearer 开头
+	// 这里的具体实现方式要依据你的实际业务情况决定
+	authHeader := c.Request.Header.Get("Authorization")
+	if authHeader == "" {
+		ResponseErrorWithMsg(c, CodeInvalidToken, "请求头缺少Auth Token")
+		c.Abort()
+		return
+	}
+	// 按空格分割
+	parts := strings.SplitN(authHeader, " ", 2)
+	if !(len(parts) == 2 && parts[0] == "Bearer") {
+		ResponseErrorWithMsg(c, CodeInvalidToken, "Token格式不对")
+		c.Abort()
+		return
+	}
+	aToken, rToken, err := jwt.RefreshToken(parts[1], rt)
+	zap.L().Error("jwt.RefreshToken failed", zap.Error(err))
+	c.JSON(http.StatusOK, gin.H{
+		"access_token":  aToken,
+		"refresh_token": rToken,
+	})
 }

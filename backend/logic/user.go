@@ -32,13 +32,13 @@ func SignUp(p *models.ParamSignUp) (err error) {
 }
 
 // Login 用户登录
-func Login(p *models.ParamLogin) (token string, err error) {
+func Login(p *models.ParamLogin) (aToken, rToken string, err error) {
 	user := &models.User{
 		Username: p.Username,
 		Password: p.Password,
 	}
 	if err := mysql.Login(user); err != nil {
-		return "", err
+		return "", "", err
 	}
 	// 用户登录成功，生成JWT
 	return jwt.GenToken(user.UserID, user.Username)
